@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنجاز | منصة العمل الحر</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f7f8fa;
+      color: #202b3c;
+      line-height: 1.8;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid #e8ebef;
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 14px 0;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: bold;
+      color: #16865c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: #526071;
+      font-size: 14px;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      border: 1px solid #16865c;
+      padding: 9px 17px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: #16865c;
+      color: white;
+    }
+
+    .btn-outline {
+      background: white;
+      color: #16865c;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #e7f7ef, #f4fbf7);
+      padding: 76px 0 68px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 43px);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: #16865c;
+    }
+
+    .hero p {
+      color: #596879;
+      max-width: 650px;
+      margin: 0 auto 28px;
+    }
+
+    .search-box {
+      background: white;
+      padding: 8px;
+      border: 1px solid #e0e7e2;
+      border-radius: 12px;
+      display: flex;
+      gap: 10px;
+      max-width: 680px;
+      margin: auto;
+      box-shadow: 0 8px 28px #1233220c;
+    }
+
+    .search-box input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      padding: 12px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      color: #536477;
+      font-size: 14px;
+    }
+
+    .stats strong {
+      color: #16865c;
+      font-size: 20px;
+      display: block;
+    }
+
+    section {
+      padding: 55px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      font-size: 25px;
+    }
+
+    .section-heading p {
+      color: #718092;
+      font-size: 14px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .category {
+      background: white;
+      border: 1px solid #e9edf1;
+      border-radius: 12px;
+      padding: 22px 15px;
+      transition: 0.2s;
+    }
+
+    .category:hover, .project:hover {
+      border-color: #16865c;
+      transform: translateY(-3px);
+    }
+
+    .category .emoji {
+      font-size: 29px;
+      display: block;
+      margin-bottom: 9px;
+    }
+
+    .category h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .category p {
+      color: #758194;
+      font-size: 13px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      background: white;
+      border: 1px solid #e9edf1;
+      border-radius: 12px;
+      padding: 23px;
+      transition: 0.2s;
+    }
+
+    .project h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: #697789;
+      font-size: 14px;
+      margin-bottom: 17px;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-top: 1px solid #edf0f3;
+      padding-top: 14px;
+      font-size: 13px;
+      color: #657486;
+    }
+
+    .price {
+      color: #16865c;
+      font-weight: bold;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e9f7ef;
+      color: #16865c;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 30px;
+      color: #697789;
+      background: white;
+      border-radius: 12px;
+    }
+
+    .cta {
+      background: #173d32;
+      color: white;
+      border-radius: 16px;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .cta p {
+      color: #d4e6dd;
+      margin: 10px 0 22px;
+    }
+
+    footer {
+      background: white;
+      border-top: 1px solid #e8ebef;
+      padding: 25px 0;
+      color: #728092;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        justify-content: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 48px 0;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .stats {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+      <a class="logo" href="#">إنجاز</a>
+
+      <nav class="nav-links">
+        <a href="#categories">التخصصات</a>
+        <a href="#projects">المشروعات</a>
+        <a href="#how">كيف تعمل المنصة؟</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline" onclick="showMessage('ميزة تسجيل الدخول سنبنيها في المرحلة القادمة.')">
+          دخول
+        </button>
+        <button class="btn btn-primary" onclick="showMessage('ميزة إنشاء الحساب سنبنيها في المرحلة القادمة.')">
+          حساب جديد
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="container">
+        <h1>
+          مهارتك تستحق الفرصة<br>
+          <span>ابدأ مشروعك القادم من هنا</span>
+        </h1>
+
+        <p>
+          منصة تجمع أصحاب المشروعات بالمستقلين المحترفين.
+          اعرض مشروعك، واستقبل العروض، واختر الشخص المناسب لتنفيذه.
+        </p>
+
+        <form class="search-box" id="searchForm">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="ابحث عن مشروع أو تخصص..."
+            aria-label="البحث عن مشروع أو تخصص"
+          >
+          <button class="btn btn-primary" type="submit">
+            ابحث الآن
+          </button>
+        </form>
+
+        <div class="stats">
+          <div><strong>متنوعة</strong>مجالات العمل</div>
+          <div><strong>مرنة</strong>فرص العمل</div>
+          <div><strong>سهلة</strong>طريقة الاستخدام</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="categories">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>استكشف التخصصات</h2>
+            <p>اختر المجال الذي يناسب مهاراتك.</p>
+          </div>
+        </div>
+
+        <div class="categories">
+          <a class="category" href="#projects" data-category="برمجة">
+            <span class="emoji">💻</span>
+            <h3>البرمجة والتطوير</h3>
+            <p>مواقع وتطبيقات وحلول تقنية</p>
+          </a>
+
+          <a class="category" href="#projects" data-category="تصميم">
+            <span class="emoji">🎨</span>
+            <h3>التصميم والإبداع</h3>
+            <p>هويات بصرية وتصميمات</p>
+          </a>
+
+          <a class="category" href="#projects" data-category="كتابة">
+            <span class="emoji">✍️</span>
+            <h3>الكتابة والترجمة</h3>
+            <p>محتوى ومقالات وترجمة</p>
+          </a>
+
+          <a class="category" href="#projects" data-category="تسويق">
+            <span class="emoji">📈</span>
+            <h3>التسويق الإلكتروني</h3>
+            <p>إعلانات وتسويق وإدارة محتوى</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>مشروعات مميزة</h2>
+            <p>نماذج تجريبية لشكل المشروعات على المنصة.</p>
+          </div>
+          <button class="btn btn-outline" onclick="resetSearch()">
+            عرض الكل
+          </button>
+        </div>
+
+        <div class="projects" id="projectList">
+
+          <article class="project" data-category="برمجة" data-search="برمجة موقع إلكتروني متجر إلكتروني">
+            <span class="tag">برمجة وتطوير</span>
+            <h3>إنشاء موقع إلكتروني لمتجر صغير</h3>
+            <p>
+              مطلوب تصميم وتطوير واجهة متجر إلكتروني متجاوبة
+              مع الهواتف وأجهزة الكمبيوتر.
+            </p>
+            <div class="project-meta">
+              <span>💼 مشروع تجريبي</span>
+              <span class="price">الميزانية: 200–400 دولار</span>
+            </div>
+          </article>
+
+          <article class="project" data-category="تصميم" data-search="تصميم شعار هوية بصرية">
+            <span class="tag">تصميم وإبداع</span>
+            <h3>تصميم شعار وهوية بصرية</h3>
+            <p>
+              تصميم شعار مميز لمشروع ناشئ مع اختيار الألوان
+              والخطوط المناسبة للعلامة التجارية.
+            </p>
+            <div class="project-meta">
+              <span>💼 مشروع تجريبي</span>
+              <span class="price">الميزانية: 50–100 دولار</span>
+            </div>
+          </article>
+
+          <article class="project" data-category="كتابة" data-search="كتابة مقالات محتوى">
+            <span class="tag">كتابة وترجمة</span>
+            <h3>كتابة مقالات لموقع تعليمي</h3>
+            <p>
+              إعداد محتوى تعليمي مبسط ومنظم،
+              مع مراعاة الدقة اللغوية وسهولة القراءة.
+            </p>
+            <div class="project-meta">
+              <span>💼 مشروع تجريبي</span>
+              <span class="price">الميزانية: 30–80 دولار</span>
+            </div>
+          </article>
+
+          <article class="project" data-category="تسويق" data-search="تسويق إدارة صفحات التواصل الاجتماعي">
+            <span class="tag">تسويق إلكتروني</span>
+            <h3>إدارة صفحات التواصل الاجتماعي</h3>
+            <p>
+              إعداد خطة محتوى شهرية وتنظيم المنشورات
+              ومتابعة التفاعل مع الجمهور.
+            </p>
+            <div class="project-meta">
+              <span>💼 مشروع تجريبي</span>
+              <span class="price">الميزانية: 100–200 دولار</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="cta">
+          <h2>حوّل مهارتك إلى فرصة عمل</h2>
+          <p>
+            سواء كنت تبحث عن مستقل لإنجاز مشروعك،
+            أو تريد تقديم خدماتك للعملاء، فهذه المنصة صُممت لك.
+          </p>
+          <button class="btn btn-primary"
+            style="background:white;color:#16865c;border-color:white"
+            onclick="showMessage('سنضيف نشر المشروعات وإنشاء الحسابات في المراحل القادمة.')">
+            ابدأ الآن
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      إنجاز © 2026 — نموذج أولي لمنصة عربية للعمل الحر.
+      <br>
+      المشروعات والميزانيات المعروضة أمثلة تجريبية وليست فرص عمل حقيقية.
+    </div>
+  </footer>
+
+  <script>
+    const searchForm = document.getElementById("searchForm");
+    const searchInput = document.getElementById("searchInput");
+    const projects = document.querySelectorAll(".project");
+
+    function normalizeText(text) {
+      return text
+        .toLowerCase()
+        .replace(/[أإآ]/g, "ا")
+        .replace(/ة/g, "ه")
+        .trim();
+    }
+
+    function filterProjects(query) {
+      const term = normalizeText(query);
+      let visibleCount = 0;
+
+      projects.forEach(function(project) {
+        const content = normalizeText(
+          project.innerText + " " +
+          project.dataset.search + " " +
+          project.dataset.category
+        );
+
+        const matches = content.includes(term);
+
+        project.style.display = matches ? "block" : "none";
+
+        if (matches) visibleCount++;
+      });
+
+      let emptyMessage = document.getElementById("emptyMessage");
+
+      if (!emptyMessage) {
+        emptyMessage = document.createElement("div");
+        emptyMessage.id = "emptyMessage";
+        emptyMessage.className = "empty";
+        emptyMessage.innerText = "لا توجد مشروعات مطابقة لبحثك.";
+        document.getElementById("projectList").appendChild(emptyMessage);
+      }
+
+      emptyMessage.style.display =
+        visibleCount === 0 ? "block" : "none";
+    }
+
+    searchForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      filterProjects(searchInput.value);
+      document.getElementById("projects").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+    document.querySelectorAll("[data-category]").forEach(function(link) {
+      link.addEventListener("click", function() {
+        searchInput.value = link.dataset.category;
+        filterProjects(link.dataset.category);
+      });
+    });
+
+    function resetSearch() {
+      searchInput.value = "";
+      filterProjects("");
+    }
+
+    function showMessage(message) {
+      alert(message);
+    }
+  </script>
+
+</body>
+</html>
